@@ -465,6 +465,13 @@ function initBrandIntro() {
     setTimeout(() => {
       showToast("🌿 ¡Bienvenido a Terra Común! « Cuidar nos une »");
     }, 600);
+
+    // Completely remove intro from render tree after animation to prevent Android scroll/touch interference
+    setTimeout(() => {
+      if (brandIntro.classList.contains("unveiling")) {
+        brandIntro.style.display = "none";
+      }
+    }, 1200);
   }
 
   if (enterSiteBtn) {
@@ -478,6 +485,9 @@ function initBrandIntro() {
   // Allow replaying intro from navbar
   if (replayIntroBtn) {
     replayIntroBtn.addEventListener("click", () => {
+      brandIntro.style.display = "flex";
+      // Trigger reflow before removing class
+      void brandIntro.offsetWidth;
       window.scrollTo({ top: 0, behavior: "smooth" });
       brandIntro.classList.remove("unveiling");
       document.body.style.overflow = "hidden";
