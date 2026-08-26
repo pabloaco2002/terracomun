@@ -2291,9 +2291,12 @@ button {
     top: 70px;
     left: 0;
     width: 100%;
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     background: #ffffff;
-    padding: 2rem;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem 1.75rem 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
     transform: translateY(-120%);
     transition: transform var(--transition-normal);
     z-index: 99;
@@ -2305,8 +2308,23 @@ button {
 
   .main-nav .nav-list {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
+    align-items: stretch;
+    gap: 0.25rem;
+    width: 100%;
+  }
+
+  .main-nav .nav-list li {
+    width: 100%;
+  }
+
+  .main-nav .nav-link {
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.75rem 0;
+    color: var(--color-primary-dark);
+    border-bottom: 1px solid rgba(30, 81, 56, 0.08);
   }
 
   .mobile-toggle-btn {
@@ -3270,6 +3288,218 @@ button {
 .social-icon:hover .tiktok-svg-icon {
   transform: scale(1.1);
 }
+
+/* ==========================================================================
+   COMPREHENSIVE MOBILE RESPONSIVE OVERRIDES (< 768px & < 480px)
+   ========================================================================== */
+
+/* Custom Touch-Friendly Range Sliders */
+.calc-slider-input,
+.custom-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  background: var(--color-primary-soft);
+  outline: none;
+}
+
+.calc-slider-input::-webkit-slider-thumb,
+.custom-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 12px rgba(20, 53, 39, 0.3);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.calc-slider-input::-webkit-slider-thumb:active,
+.custom-range::-webkit-slider-thumb:active {
+  transform: scale(1.15);
+}
+
+.calc-slider-input::-moz-range-thumb,
+.custom-range::-moz-range-thumb {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 12px rgba(20, 53, 39, 0.3);
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  /* Announcement Bar */
+  .announcement-bar {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.775rem;
+    line-height: 1.35;
+  }
+  .announcement-content p {
+    font-size: 0.775rem;
+  }
+  .announcement-link {
+    display: inline-block;
+    margin-top: 0.15rem;
+  }
+
+  /* Catalog Filters Horizontal Touch Scroll */
+  .catalog-filters {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+    justify-content: flex-start;
+    scrollbar-width: none;
+  }
+  .catalog-filters::-webkit-scrollbar {
+    display: none;
+  }
+  .filter-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 0.45rem 0.95rem;
+    font-size: 0.825rem;
+  }
+
+  /* Authorities Grid Mobile Fix (1 column) */
+  .authorities-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem;
+  }
+  .authority-card {
+    padding: 1.5rem 1.25rem 1.35rem;
+  }
+
+  /* Intro Screen Mobile Scaling */
+  .brand-intro-overlay {
+    padding: 1rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .intro-skip-btn {
+    top: 0.75rem;
+    right: 0.75rem;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.775rem;
+    gap: 0.35rem;
+  }
+
+  .intro-main-stage {
+    padding: 1.5rem 1.15rem;
+    max-height: calc(100vh - 2rem);
+    width: 100%;
+    max-width: 440px;
+    margin: auto;
+    gap: 0.75rem;
+  }
+
+  .intro-symbol-wrapper {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .intro-logo-visual {
+    height: 52px;
+  }
+
+  .intro-logo-img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .intro-product-hologram {
+    transform: scale(0.85);
+    margin: 0;
+  }
+
+  .intro-badge {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .intro-slogan-title {
+    font-size: 1.55rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .intro-manifesto-sub {
+    font-size: 0.85rem;
+    line-height: 1.45;
+    margin-bottom: 0.75rem;
+  }
+
+  .intro-tags-row {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .intro-pill {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.75rem;
+  }
+
+  .btn-enter-site {
+    padding: 0.85rem 1.25rem;
+    font-size: 0.95rem;
+    width: 100%;
+  }
+
+  .intro-hint-text {
+    font-size: 0.725rem;
+  }
+
+  /* Cart Drawer Mobile Safe Area */
+  .cart-drawer-footer {
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-width: 576px) {
+  /* Ingredients & Benefits 1-Column layout on mobile phones */
+  .ingredients-showcase {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+  }
+
+  /* Intro further refinement on narrow phones */
+  .intro-slogan-title {
+    font-size: 1.4rem;
+  }
+  .intro-manifesto-sub {
+    font-size: 0.8rem;
+  }
+  .intro-product-hologram {
+    display: none;
+  }
+}
+
 
 
 
