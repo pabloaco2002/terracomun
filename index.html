@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terra Común | Desinfectante Sólido Ecológico para Inodoros</title>
+  <meta name="description" content="Limpieza y frescura botánica para tu baño sin generar residuos plásticos. Pastillas desinfectantes artesanales con limón, lavanda, eucalipto y jacarandá." />
+  <meta name="keywords" content="desinfectante ecologico, inodoro sustentable, pastilla inodoro sin plastico, terra comun, limpieza artesanal natural" />
+  <meta property="og:title" content="Terra Común | Cuidado Botánico & Cero Plástico" />
+  <meta property="og:description" content="Desinfectante sólido para inodoro elaborado artesanalmente con ingredientes 100% naturales." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="terracomunlogo.jpeg" />
+  <link rel="icon" type="image/png" href="terracomunlogosinfondo.jpeg.png" />
+
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons (CDN) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- INTRO ANIMADA / SPLASH SCREEN INTERACTIVO -->
+  <div class="brand-intro-overlay" id="brandIntro" role="dialog" aria-modal="true" aria-label="Introducción a Terra Común">
+    <!-- Unveil Botanical Wings (Hojas de apertura estilo cortina orgánica) -->
+    <div class="unveil-wing wing-left" id="unveilWingLeft">
+      <div class="wing-leaf-art"></div>
+    </div>
+    <div class="unveil-wing wing-right" id="unveilWingRight">
+      <div class="wing-leaf-art"></div>
+    </div>
+
+    <!-- Floating Leaves & Petals Particles -->
+    <div class="floating-botanicals-container" aria-hidden="true">
+      <div class="intro-floating-leaf leaf-1">🍃</div>
+      <div class="intro-floating-leaf leaf-2">🌿</div>
+      <div class="intro-floating-leaf leaf-3">🌸</div>
+      <div class="intro-floating-leaf leaf-4">🍋</div>
+      <div class="intro-floating-leaf leaf-5">🪻</div>
+      <div class="intro-floating-leaf leaf-6">🌱</div>
+      <div class="intro-floating-leaf leaf-7">✨</div>
+    </div>
+
+    <!-- Top Skip Control -->
+    <button class="intro-skip-btn" id="skipIntroBtn" aria-label="Saltar introducción y entrar">
+      <span>Saltar intro</span>
+      <i data-lucide="arrow-right"></i>
+    </button>
+
+    <!-- Center Interactive Stage -->
+    <div class="intro-main-stage">
+      <!-- Animated Logo & Tablet Hologram -->
+      <div class="intro-symbol-wrapper">
+        <div class="intro-glow-aura"></div>
+        <div class="intro-leaf-glow"></div>
+        
+        <!-- Logo Image with Glowing Leaf & Flower -->
+        <div class="intro-logo-visual">
+          <img src="terracomunlogosinfondo.jpeg.png" alt="Terra Común Imagotipo" class="intro-logo-img" />
+        </div>
+
+        <!-- Animated Floating Solid Eco Tablet -->
+        <div class="intro-product-hologram" title="Pastilla sólida artesanal">
+          <div class="intro-tablet-3d">
+            <span class="tablet-core"></span>
+            <span class="tablet-shine"></span>
+            <span class="tablet-scent-dot dot-lemon" title="Limón"></span>
+            <span class="tablet-scent-dot dot-lavender" title="Lavanda"></span>
+            <span class="tablet-scent-dot dot-eucalyptus" title="Eucalipto"></span>
+            <span class="tablet-scent-dot dot-jacaranda" title="Jacarandá"></span>
+          </div>
+          <span class="tablet-caption">Pastilla Desinfectante Sólida</span>
+        </div>
+      </div>
+
+      <!-- Typography & Slogan Sequence -->
+      <div class="intro-text-sequence">
+        <div class="intro-badge">
+          <span class="badge-sparkle">✨</span>
+          <span>Innovación Artesanal & Sustentable</span>
+        </div>
+
+        <!-- Official Brand Slogan from Identity Manual -->
+        <div class="intro-slogan-box">
+          <h2 class="intro-slogan-title">« Cuidar nos une »</h2>
+          <p class="intro-manifesto-sub">
+            La limpieza no debería obligarnos a elegir entre higiene y cuidado ambiental. 
+            Cambiamos los químicos y plásticos descartables por una alternativa botánica, artesanal y 100% biodegradable.
+          </p>
+        </div>
+
+        <div class="intro-tags-row">
+          <span class="intro-pill"><i data-lucide="leaf"></i> 100% Biodegradable</span>
+          <span class="intro-pill"><i data-lucide="shield-check"></i> 0% Plásticos descartables</span>
+          <span class="intro-pill"><i data-lucide="sparkles"></i> Aceites Botánicos Puros</span>
+        </div>
+
+        <!-- Primary Interactive Button to Enter Site -->
+        <div class="intro-action-container">
+          <button class="btn btn-enter-site" id="enterSiteBtn">
+            <span class="btn-ripple-bg"></span>
+            <span class="btn-text">Entrar al Sitio</span>
+            <span class="btn-arrow-box">
+              <i data-lucide="arrow-right"></i>
+            </span>
+          </button>
+          <span class="intro-hint-text">Presiona para abrir la experiencia</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background Animated Glowing Orbs -->
+  <div class="ambient-glow orb-1" aria-hidden="true"></div>
+  <div class="ambient-glow orb-2" aria-hidden="true"></div>
+  <div class="ambient-glow orb-3" aria-hidden="true"></div>
+
+  <!-- Announcement Bar -->
+  <aside class="announcement-bar">
+    <div class="container announcement-content">
+      <span class="sparkle-icon">✨</span>
+      <p><strong>Cero Plásticos de un Solo Uso:</strong> Cuidamos el agua y la tierra con cada descarga.</p>
+      <a href="#catalogo" class="announcement-link">Ver catálogo ➔</a>
+    </div>
+  </aside>
+
+  <!-- Navigation Bar -->
+  <header class="site-header" id="navbar">
+    <div class="container header-container">
+      <a href="#" class="brand-link" aria-label="Terra Común Inicio">
+        <img src="terracomunlogosinfondo.jpeg.png" alt="Logo Terra Común" class="nav-logo" />
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <ul class="nav-list">
+          <li><a href="#beneficios" class="nav-link">Beneficios</a></li>
+          <li><a href="#ingredientes" class="nav-link">Aromas Botánicos</a></li>
+          <li><a href="#catalogo" class="nav-link">Catálogo</a></li>
+          <li><a href="#como-funciona" class="nav-link">Cómo se Usa</a></li>
+          <li><a href="#calculadora" class="nav-link">Impacto Eco</a></li>
+          <li><a href="#equipo" class="nav-link">Nuestro Equipo</a></li>
+          <li><a href="#faq" class="nav-link">Preguntas</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="cart-trigger-btn" id="openCartBtn" aria-label="Abrir Carrito de compras">
+          <i data-lucide="shopping-bag"></i>
+          <span class="cart-count" id="cartCountBadge">0</span>
+          <span class="cart-label-text">Mi Pedido</span>
+        </button>
+
+        <button class="intro-replay-nav-btn" id="replayIntroBtn" title="Ver animación de inicio">
+          <i data-lucide="sparkles"></i>
+          <span>Intro</span>
+        </button>
+
+        <a href="#catalogo" class="btn btn-primary btn-sm header-cta">Pedir Ahora</a>
+
+        <button class="mobile-toggle-btn" id="mobileMenuBtn" aria-label="Abrir menú de navegación">
+          <i data-lucide="menu" id="menuIcon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <!-- Background Video Embed with Botanical Green Filter & Gradient Overlay -->
+      <div class="hero-video-bg-wrapper" aria-hidden="true">
+        <div class="hero-video-tint-overlay"></div>
+        <div class="hero-video-vignette"></div>
+        <iframe
+          class="hero-video-iframe"
+          src="https://www.youtube-nocookie.com/embed/jfvIIB6QzfM?autoplay=1&mute=1&loop=1&playlist=jfvIIB6QzfM&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&playsinline=1&enablejsapi=1"
+          title="Video de presentación Terra Común"
+          allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
+          tabindex="-1"
+        ></iframe>
+      </div>
+
+      <div class="container hero-grid">
+        <div class="hero-text-content">
+          <div class="badge-pill hero-badge">
+            <span class="badge-dot"></span>
+            <span>100% Biodegradable & Artesanal</span>
+          </div>
+
+          <h1 class="hero-title">
+            El poder de la naturaleza para un baño <span class="gradient-text">puro y sustentable</span>
+          </h1>
+
+          <p class="hero-description">
+            Revolucionamos la higiene del inodoro. Pastillas desinfectantes sólidas artesanales con 
+            aceites esenciales de <strong>limón, lavanda, eucalipto y jacarandá</strong>. Limpian, 
+            aromatizan y neutralizan bacterias sin generar residuos plásticos contaminantes.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#catalogo" class="btn btn-primary btn-lg shadow-glow">
+              <i data-lucide="sparkles"></i>
+              Explorar Catálogo
+            </a>
+            <a href="https://wa.me/?text=Hola!%20Quisiera%20hacer%20una%20consulta%20sobre%20el%20desinfectante%20solido%20ecologico%20Terra%20Comun." target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg btn-whatsapp">
+              <i data-lucide="message-circle"></i>
+              Consultar por WhatsApp
+            </a>
+          </div>
+
+          <div class="hero-stats-row">
+            <div class="stat-card">
+              <div class="stat-icon-wrapper">
+                <i data-lucide="shield-check"></i>
+              </div>
+              <div>
+                <strong class="stat-number">0%</strong>
+                <span class="stat-label">Plástico descartable</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon-wrapper">
+                <i data-lucide="leaf"></i>
+              </div>
+              <div>
+                <strong class="stat-number">100%</strong>
+                <span class="stat-label">Ingredientes Naturales</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon-wrapper">
+                <i data-lucide="wind"></i>
+              </div>
+              <div>
+                <strong class="stat-number">+150</strong>
+                <span class="stat-label">Descargas de frescura</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual-showcase">
+          <div class="hero-card-glass">
+            <div class="hero-image-wrapper">
+              <img 
+                src="WhatsApp Image 2026-08-26 at 3.46.18 PM.jpeg" 
+                alt="Pastilla desinfectante ecológica sólida Terra Común en su soporte reutilizable" 
+                class="hero-main-img" 
+                id="heroMainImage"
+              />
+              <div class="image-overlay-pill">
+                <i data-lucide="droplet"></i>
+                <span>Liberación activa gradual</span>
+              </div>
+            </div>
+
+            <!-- Interactive Mini Floater Card -->
+            <div class="floating-badge-bottom">
+              <div class="floating-brand-icon">
+                <img src="terracomunlogosinfondo.jpeg.png" alt="Terra Común" />
+              </div>
+              <div class="floating-badge-info">
+                <h4>Fórmula Botánica Activa</h4>
+                <p>Aromatiza con extractos puros</p>
+              </div>
+            </div>
+
+            <!-- Floating Scents Preview -->
+            <div class="floating-scents-card">
+              <span class="scents-title">Variedades Disponibles:</span>
+              <div class="scents-tags">
+                <span class="scent-tag tag-lemon">🍋 Limón</span>
+                <span class="scent-tag tag-lavender">💜 Lavanda</span>
+                <span class="scent-tag tag-eucalyptus">🌿 Eucalipto</span>
+                <span class="scent-tag tag-jacaranda">🌸 Jacarandá</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HIGHLIGHT PILLARS / BENEFICIOS BASADOS EN IDENTIDAD Y GUION OFICIAL -->
+    <section class="section benefits-section" id="beneficios">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="badge-pill">Propósito & Identidad</div>
+          <h2 class="section-title">¿Por qué elegir Terra Común?</h2>
+          <p class="section-subtitle">
+            Creemos firmemente que <strong>la limpieza no debería obligarnos a elegir entre higiene y cuidado ambiental</strong>. 
+            Transformamos el producto más contaminante del baño en una acción de respeto hacia nuestra casa común.
+          </p>
+        </div>
+
+        <div class="benefits-grid">
+          <!-- Pilar 1: Eficacia y Seguridad -->
+          <div class="benefit-card">
+            <div class="benefit-icon-box bg-green">
+              <i data-lucide="shield-check"></i>
+            </div>
+            <span class="benefit-pill-badge">Eficacia & Salud</span>
+            <h3>Higiene sin Químicos Tóxicos</h3>
+            <p>
+              Combina desinfección activa y prevención natural de sarro. Protege la salud de tu familia, tus cañerías y el agua sin despedir vapores corrosivos ni cloro artificial.
+            </p>
+          </div>
+
+          <!-- Pilar 2: Cero Plásticos -->
+          <div class="benefit-card">
+            <div class="benefit-icon-box bg-purple">
+              <i data-lucide="droplets"></i>
+            </div>
+            <span class="benefit-pill-badge">Zero Waste</span>
+            <h3>Cuidado del Agua y Cero Plásticos</h3>
+            <p>
+              Reemplaza las canastillas plásticas descartables por un soporte permanente reutilizable. Nuestra pastilla sólida se disuelve al 100% sin generar microplásticos en las cuencas.
+            </p>
+          </div>
+
+          <!-- Pilar 3: Botánica y Artesanal -->
+          <div class="benefit-card">
+            <div class="benefit-icon-box bg-yellow">
+              <i data-lucide="leaf"></i>
+            </div>
+            <span class="benefit-pill-badge">Artesanal & Puro</span>
+            <h3>Alquimia Botánica Real</h3>
+            <p>
+              Elaborado artesanalmente en pequeños lotes con ingredientes naturales y aceites puros de limón, lavanda, eucalipto y jacarandá para una frescura terapéutica y duradera.
+            </p>
+          </div>
+
+          <!-- Pilar 4: Cuidar nos une -->
+          <div class="benefit-card">
+            <div class="benefit-icon-box bg-teal">
+              <i data-lucide="heart-handshake"></i>
+            </div>
+            <span class="benefit-pill-badge">« Cuidar nos une »</span>
+            <h3>Compromiso Compartido</h3>
+            <p>
+              El cuidado ambiental no es una tarea solitaria, es un vínculo que nos une como comunidad. Cada descarga de tu inodoro se transforma en un voto por un futuro sustentable.
+            </p>
+          </div>
+        </div>
+
+        <!-- Manifesto Highlight Banner -->
+        <div class="brand-manifesto-banner">
+          <div class="manifesto-quote-icon">
+            <i data-lucide="quote"></i>
+          </div>
+          <div class="manifesto-text-block">
+            <p class="manifesto-quote">
+              « Porque cada limpieza puede convertirse en una acción de cuidado. Y cuando millones de pequeñas acciones se unen, el cambio deja de ser una idea y se convierte en una realidad. »
+            </p>
+            <span class="manifesto-author">— Manifiesto Terra Común | Colegio Fasta San Alberto Magno</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INGREDIENTES Y AROMAS BOTÁNICOS -->
+    <section class="section ingredients-section" id="ingredientes">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="badge-pill">Alquimia Natural</div>
+          <h2 class="section-title">Esencias y Activos Botánicos</h2>
+          <p class="section-subtitle">
+            Cada pastilla combina el equilibrio perfecto entre desinfección profunda y notas aromáticas envolventes.
+          </p>
+        </div>
+
+        <div class="ingredients-showcase">
+          <!-- Limón -->
+          <article class="aroma-card card-lemon">
+            <div class="aroma-header">
+              <div class="aroma-emoji">🍋</div>
+              <span class="aroma-badge">Revitalizante</span>
+            </div>
+            <h3>Limón Fresco</h3>
+            <p class="aroma-desc">
+              Poderoso desengrasante y desincrustante natural con ácido cítrico que corta la cal y deja una sensación cítrica brillante e hiper fresca.
+            </p>
+            <ul class="aroma-features">
+              <li><i data-lucide="check"></i> Antisarro natural</li>
+              <li><i data-lucide="check"></i> Neutralizador de olores</li>
+            </ul>
+          </article>
+
+          <!-- Lavanda -->
+          <article class="aroma-card card-lavender">
+            <div class="aroma-header">
+              <div class="aroma-emoji">🪻</div>
+              <span class="aroma-badge">Relajante</span>
+            </div>
+            <h3>Lavanda Silvestre</h3>
+            <p class="aroma-desc">
+              Propiedades antisépticas suaves combinadas con una estela calmante y armoniosa que transforma el ambiente de tu baño en un spa natural.
+            </p>
+            <ul class="aroma-features">
+              <li><i data-lucide="check"></i> Acción antibacteriana</li>
+              <li><i data-lucide="check"></i> Aroma suave y reconfortante</li>
+            </ul>
+          </article>
+
+          <!-- Eucalipto -->
+          <article class="aroma-card card-eucalyptus">
+            <div class="aroma-header">
+              <div class="aroma-emoji">🌿</div>
+              <span class="aroma-badge">Purificante</span>
+            </div>
+            <h3>Eucalipto Nativo</h3>
+            <p class="aroma-desc">
+              Notas balsámicas intensas y cineol activo que brindan una limpieza profunda, desinfectando el conducto y despejando el aire.
+            </p>
+            <ul class="aroma-features">
+              <li><i data-lucide="check"></i> Máxima frescura balsámica</li>
+              <li><i data-lucide="check"></i> Purificación continua</li>
+            </ul>
+          </article>
+
+          <!-- Jacarandá -->
+          <article class="aroma-card card-jacaranda">
+            <div class="aroma-header">
+              <div class="aroma-emoji">🌸</div>
+              <span class="aroma-badge">Floral Exclusivo</span>
+            </div>
+            <h3>Jacarandá en Flor</h3>
+            <p class="aroma-desc">
+              Inspirado en la primavera y la identidad de nuestra tierra. Un acorde floral delicado, fresco y sofisticado que enamora los sentidos.
+            </p>
+            <ul class="aroma-features">
+              <li><i data-lucide="check"></i> Perfume floral sutil</li>
+              <li><i data-lucide="check"></i> Fórmula biodegradable</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARATIVA: CONVENCIONAL VS TERRA COMÚN -->
+    <section class="section comparison-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="badge-pill">Evolución Consciente</div>
+          <h2 class="section-title">El fin de los plásticos en tu inodoro</h2>
+          <p class="section-subtitle">Mira la diferencia tangible entre lo tradicional y la propuesta sustentable de Terra Común.</p>
+        </div>
+
+        <div class="comparison-table-wrapper">
+          <div class="comparison-grid">
+            <div class="comparison-col traditional-col">
+              <div class="comp-header">
+                <span class="comp-badge bad">Convencional</span>
+                <h3>Canastillas de Supermercado</h3>
+              </div>
+              <ul class="comp-list">
+                <li><i data-lucide="x-circle" class="icon-bad"></i> Canastillas de plástico descartables cada 2 semanas</li>
+                <li><i data-lucide="x-circle" class="icon-bad"></i> Fragancias químicas artificiales penetrantes</li>
+                <li><i data-lucide="x-circle" class="icon-bad"></i> Cloro y sulfatos corrosivos para cañerías</li>
+                <li><i data-lucide="x-circle" class="icon-bad"></i> Genera hasta 26 envases plásticos al año por hogar</li>
+              </ul>
+            </div>
+
+            <div class="comparison-col eco-col">
+              <div class="comp-header">
+                <span class="comp-badge good">Sustentable</span>
+                <h3>Pastilla Sólida Terra Común</h3>
+              </div>
+              <ul class="comp-list">
+                <li><i data-lucide="check-circle-2" class="icon-good"></i> <strong>Soporte reutilizable permanente</strong> + recargas ecológicas</li>
+                <li><i data-lucide="check-circle-2" class="icon-good"></i> <strong>Aceites esenciales botánicos puros</strong></li>
+                <li><i data-lucide="check-circle-2" class="icon-good"></i> <strong>Seguro para cañerías, fosas y mascotas</strong></li>
+                <li><i data-lucide="check-circle-2" class="icon-good"></i> <strong>100% Cero Basura</strong> (Zero Waste)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATALOG SECTION (CATÁLOGO DE PRODUCTOS) -->
+    <section class="section catalog-section" id="catalogo">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="badge-pill">Tienda & Catálogo</div>
+          <h2 class="section-title">Nuestras Presentaciones y Packs</h2>
+          <p class="section-subtitle">
+            Elige tu aroma favorito o ahorra con nuestros kits completos con soporte reutilizable incluido.
+          </p>
+
+          <!-- Category Filter Tabs -->
+          <div class="catalog-filters" id="catalogFilters" role="tablist">
+            <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">Todos los Productos</button>
+            <button class="filter-tab" data-filter="kits" role="tab" aria-selected="false">Kits con Soporte</button>
+            <button class="filter-tab" data-filter="pastillas" role="tab" aria-selected="false">Pastillas de Reposición</button>
+            <button class="filter-tab" data-filter="packs" role="tab" aria-selected="false">Packs Ahorro Trío</button>
+          </div>
+        </div>
+
+        <!-- Products Grid (Rendered Dynamically via JS) -->
+        <div class="products-grid" id="productsContainer">
+          <!-- Dynamically populated by app.js -->
+        </div>
+
+        <!-- Gallery Strip from WhatsApp Real Photos -->
+        <div class="gallery-preview-strip">
+          <div class="gallery-strip-header">
+            <h3><i data-lucide="camera"></i> Galería de Producto Real</h3>
+            <p>Así luce la pastilla y su soporte calado en funcionamiento diario.</p>
+          </div>
+          <div class="gallery-thumbnails">
+            <div class="gallery-thumb" onclick="openLightbox('WhatsApp Image 2026-08-26 at 3.46.18 PM.jpeg')">
+              <img src="WhatsApp Image 2026-08-26 at 3.46.18 PM.jpeg" alt="Pastilla en canastilla" />
+              <div class="thumb-hover"><i data-lucide="zoom-in"></i></div>
+            </div>
+            <div class="gallery-thumb" onclick="openLightbox('WhatsApp Image 2026-08-26 at 3.46.15 PM.jpeg')">
+              <img src="WhatsApp Image 2026-08-26 at 3.46.15 PM.jpeg" alt="Canastilla con pastilla colocada" />
+              <div class="thumb-hover"><i data-lucide="zoom-in"></i></div>
+            </div>
+            <div class="gallery-thumb" onclick="openLightbox('WhatsApp Image 2026-08-26 at 3.46.15 PM (1).jpeg')">
+              <img src="WhatsApp Image 2026-08-26 at 3.46.15 PM (1).jpeg" alt="Detalle de pastilla e inserción" />
+              <div class="thumb-hover"><i data-lucide="zoom-in"></i></div>
+            </div>
+            <div class="gallery-thumb" onclick="openLightbox('WhatsApp Image 2026-08-26 at 3.46.16 PM.jpeg')">
+              <img src="WhatsApp Image 2026-08-26 at 3.46.16 PM.jpeg" alt="Pastilla compacta artesanal" />
+              <div class="thumb-hover"><i data-lucide="zoom-in"></i></div>
+            </div>
+            <div class="gallery-thumb" onclick="openLightbox('WhatsApp Image 2026-08-26 at 3.46.18 PM (1).jpeg')">
+              <img src="WhatsApp Image 2026-08-26 at 3.46.18 PM (1).jpeg" alt="Vista frontal soporte" />
+              <div class="thumb-hover"><i data-lucide="zoom-in"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA / PASO A PASO -->
+    <section class="section how-it-works-section" id="como-funciona">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="badge-pill">Fácil y Práctico</div>
+          <h2 class="section-title">¿Cómo se usa Terra Común?</h2>
+          <p class="section-subtitle">En solo 3 pasos simples tienes un inodoro limpio, aromatizado y sin plástico.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-badge">1</div>
+            <div class="step-icon">
+              <i data-lucide="package-open"></i>
+            </div>
+            <h3>Inserta la Pastilla</h3>
+            <p>Toma tu pastilla ecológica sólida Terra Común del aroma que prefieras e insértala dentro del soporte reutilizable.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-badge">2</div>
+            <div class="step-icon">
+              <i data-lucide="anchor"></i>
+            </div>
+            <h3>Cuelga del Borde</h3>
+            <p>Coloca el gancho del soporte bajo el borde del inodoro, justo donde circula el flujo de agua al descargar.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-badge">3</div>
+            <div class="step-icon">
+              <i data-lucide="sparkle"></i>
+            </div>
+            <h3>¡Descarga y Disfruta!</h3>
+            <p>Con cada descarga, los activos botánicos se liberan gradualmente higienizando la taza y perfumando el baño.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALCULADORA DE IMPACTO ECOLÓGICO -->
+    <section class="section calculator-section" id="calculadora">
+      <div class="container">
+        <div class="calculator-card-wrapper">
+          <div class="calc-info">
+            <div class="badge-pill">Tu Huella Verde</div>
+            <h2>Calcula tu Impacto Ambiental Positivo</h2>
+            <p>
+              ¿Sabías que una sola persona desecha en promedio entre 15 y 24 soportes plásticos de inodoro al año?
+              Comprueba el impacto que generas al elegir Terra Común.
+            </p>
+
+            <div class="slider-control-group">
+              <label for="peopleSlider" class="slider-label">
+                <span>Personas en tu hogar:</span>
+                <strong id="peopleCountDisplay">3 personas</strong>
+              </label>
+              <input type="range" id="peopleSlider" min="1" max="10" value="3" class="custom-range" />
+            </div>
+
+            <div class="slider-control-group">
+              <label for="monthsSlider" class="slider-label">
+                <span>Tiempo de uso estimado:</span>
+                <strong id="monthsCountDisplay">12 meses (1 año)</strong>
+              </label>
+              <input type="range" id="monthsSlider" min="1" max="36" value="12" class="custom-range" />
+            </div>
+          </div>
+
+          <div class="calc-results">
+            <div class="calc-result-box">
+              <div class="calc-stat">
+                <i data-lucide="trash-2" class="calc-stat-icon"></i>
+                <span class="calc-number" id="plasticSavedVal">36</span>
+                <span class="calc-unit">envases plásticos descartables evitados</span>
+              </div>
+              <p class="calc-detail">Menos basura plástica no degradable que tarda 500 años en descomponerse.</p>
+            </div>
+
+            <div class="calc-result-box">
+              <div class="calc-stat">
+                <i data-lucide="droplet" class="calc-stat-icon"></i>
+                <span class="calc-number" id="waterLitresVal">10,800</span>
+                <span class="calc-unit">litros de agua sin cloro ni químicos</span>
+              </div>
+              <p class="calc-detail">Agua de descarga libre de toxinas corrosivas y sulfatos pesados.</p>
+            </div>
+
+            <!-- Criterio y Detalle de Cálculo Visible -->
+            <div class="calc-methodology-box">
+              <div class="calc-methodology-title">
+                <i data-lucide="help-circle"></i>
+                <span>Criterio de Cálculo Transparente</span>
+              </div>
+              <div class="calc-methodology-items">
+                <div class="calc-meth-row">
+                  <div class="meth-badge">Plástico</div>
+                  <p>
+                    <strong id="plasticFormulaLive">3 pers. × 12 meses × 1 canastilla/mes</strong> = <strong class="meth-highlight" id="plasticFormulaResult">36 envases</strong>.<br />
+                    <span>Basado en el recambio promedio de 1 soporte plástico descartable por persona al mes.</span>
+                  </p>
+                </div>
+                <div class="calc-meth-row">
+                  <div class="meth-badge">Agua Pura</div>
+                  <p>
+                    <strong id="waterFormulaLive">3 pers. × 12 meses × 300 L/mes</strong> = <strong class="meth-highlight" id="waterFormulaResult">10.800 L</strong>.<br />
+                    <span>Basado en ~5 descargas diarias de 6 L que dejan de verter cloro y fosfatos tóxicos al agua.</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES (FAQ) -->
+    <section class="section faq-section" id="faq">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="badge-pill">Dudas Resueltas</div>
+          <h2 class="section-title">Preguntas Frecuentes</h2>
+          <p class="section-subtitle">Todo lo que necesitas saber sobre nuestras pastillas desinfectantes.</p>
+        </div>
+
+        <div class="faq-accordion" id="faqAccordion">
+          <div class="faq-item active">
+            <button class="faq-question" aria-expanded="true">
+              <span>¿Cuánto dura cada pastilla desinfectante?</span>
+              <i data-lucide="chevron-down" class="faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Cada pastilla artesanal rinde aproximadamente <strong>150 a 200 descargas</strong> (alrededor de 2 a 3 semanas para un hogar promedio), manteniendo su aroma y poder higienizante constante hasta disolverse por completo.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>¿El soporte reutilizable se compra una sola vez?</span>
+              <i data-lucide="chevron-down" class="faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                ¡Exacto! El soporte canastilla de Terra Común es reutilizable y lavable. Solo adquieres el Kit Inicial con el soporte una vez y luego únicamente compras las pastillas de repuesto (individuales o en packs ahorro).
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>¿Es seguro para cañerías y pozos sépticos?</span>
+              <i data-lucide="chevron-down" class="faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Sí, 100%. Al no contener químicos agresivos, parabenos ni derivados de petróleo, es completamente seguro para cañerías plásticas, metálicas y sistemas de pozo o biodigestores.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>¿Cómo realizo el pago y el envío?</span>
+              <i data-lucide="chevron-down" class="faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Armas tu pedido directamente desde el catálogo en esta página y al hacer clic en <em>"Enviar Pedido a WhatsApp"</em> nos contactas directamente. Coordinamos medios de pago (transferencia, efectivo, etc.) y envíos a domicilio o puntos de retiro.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN COLEGIO FASTA SAN ALBERTO MAGNO / EQUIPO EMPRENDEDOR -->
+    <section class="section team-school-section" id="equipo">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="badge-pill">Juventud Emprendedora & Sustentable</div>
+          <h2 class="section-title">El Equipo Detrás de Terra Común</h2>
+          <p class="section-subtitle">
+            Somos los 27 estudiantes de 6to año del <strong>Colegio Fasta San Alberto Magno</strong> impulsando una solución real contra la contaminación plástica en los sanitarios.
+          </p>
+        </div>
+
+        <div class="team-school-card">
+          <div class="team-photo-container">
+            <img 
+              src="WhatsApp Image 2026-08-26 at 3.56.39 PM.jpeg" 
+              alt="Equipo de 27 Achievers del Colegio Fasta San Alberto Magno" 
+              class="team-group-photo"
+              onclick="openLightbox('WhatsApp Image 2026-08-26 at 3.56.39 PM.jpeg')"
+            />
+            <div class="photo-overlay-tag">
+              <i data-lucide="users"></i>
+              <span>27 Achievers | Promoción 2026</span>
+            </div>
+          </div>
+
+          <div class="team-info-container">
+            <div class="school-header-badge">
+              <img 
+                src="WhatsApp Image 2026-08-26 at 4.10.25 PM.jpeg" 
+                alt="Escudo Colegio Fasta San Alberto Magno" 
+                class="school-shield-img"
+              />
+              <div>
+                <h3>Colegio Fasta San Alberto Magno</h3>
+                <span class="school-subtag">Empresa Educativa Junior Achievement</span>
+              </div>
+            </div>
+
+            <p class="team-description">
+              Terra Común nació en nuestras aulas como un proyecto educativo de triple impacto. Unimos ciencia botánica, diseño artesanal y compromiso ambiental para demostrar que las nuevas generaciones lideramos el cambio sustentable.
+            </p>
+
+            <blockquote class="team-quote">
+              « La limpieza de tu hogar puede convertirse en una acción de cuidado para todo el planeta. »
+            </blockquote>
+
+            <div class="team-highlights">
+              <div class="highlight-item">
+                <i data-lucide="award"></i>
+                <span>Compañía de 27 Achievers</span>
+              </div>
+              <div class="highlight-item">
+                <i data-lucide="sprout"></i>
+                <span>Producción 100% Artesanal</span>
+              </div>
+              <div class="highlight-item">
+                <i data-lucide="heart"></i>
+                <span>Compromiso Ambiental</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION BANNER -->
+    <section class="cta-banner-section">
+      <div class="container">
+        <div class="cta-banner-card">
+          <div class="cta-banner-content">
+            <img src="terracomunlogosinfondo.jpeg.png" alt="Terra Común" class="cta-logo" />
+            <h2>Súmate a la higiene libre de plásticos</h2>
+            <p>Empieza hoy a cuidar tu baño y el planeta con esencias botánicas 100% naturales.</p>
+            <div class="cta-actions">
+              <a href="#catalogo" class="btn btn-primary btn-lg shadow-glow">Ver Catálogo y Precios</a>
+              <a href="https://wa.me/?text=Hola!%20Me%20interesa%20comprar%20el%20desinfectante%20solido%20Terra%20Comun." target="_blank" class="btn btn-secondary btn-lg btn-whatsapp">
+                <i data-lucide="message-circle"></i> Chatear con nosotros
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col brand-col">
+        <img src="terracomunlogosinfondo.jpeg.png" alt="Terra Común Logo" class="footer-logo" />
+        <p>Desinfectantes sólidos ecológicos y artesanales para inodoros. Frescura botánica y compromiso con el medio ambiente.</p>
+        <div class="footer-badges">
+          <span class="badge-tag">🌱 Zero Waste</span>
+          <span class="badge-tag">🐰 Cruelty Free</span>
+          <span class="badge-tag">💧 Biodegradable</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul class="footer-links">
+          <li><a href="#hero">Inicio</a></li>
+          <li><a href="#beneficios">Beneficios</a></li>
+          <li><a href="#ingredientes">Aromas Botánicos</a></li>
+          <li><a href="#catalogo">Catálogo</a></li>
+          <li><a href="#como-funciona">Modo de Uso</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Variedades</h4>
+        <ul class="footer-links">
+          <li><a href="#catalogo">Limón Revitalizante</a></li>
+          <li><a href="#catalogo">Lavanda Relajante</a></li>
+          <li><a href="#catalogo">Eucalipto Purificante</a></li>
+          <li><a href="#catalogo">Jacarandá en Flor</a></li>
+          <li><a href="#catalogo">Pack Trío Ahorro</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto & Pedidos</h4>
+        <p class="footer-contact-item">
+          <i data-lucide="message-circle"></i> Pedidos directos vía WhatsApp
+        </p>
+        <p class="footer-contact-item">
+          <i data-lucide="map-pin"></i> Envíos a todo el país
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-icon" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="#" class="social-icon" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="https://wa.me/?text=Hola%20Terra%20Comun" target="_blank" class="social-icon" aria-label="WhatsApp"><i data-lucide="message-circle"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <p>© 2026 Terra Común. Todos los derechos reservados. Hecho con pasión artesanal y respeto por la tierra.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SHOPPING CART SLIDE-OVER DRAWER -->
+  <div class="cart-backdrop" id="cartBackdrop" aria-hidden="true"></div>
+  <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartDrawerTitle">
+    <div class="cart-drawer-header">
+      <div class="cart-title-wrapper">
+        <i data-lucide="shopping-bag"></i>
+        <h3 id="cartDrawerTitle">Tu Pedido Terra Común</h3>
+      </div>
+      <button class="cart-close-btn" id="closeCartBtn" aria-label="Cerrar Carrito">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+
+    <div class="cart-drawer-body" id="cartItemsContainer">
+      <!-- Injected by app.js -->
+    </div>
+
+    <div class="cart-drawer-footer" id="cartDrawerFooter">
+      <div class="cart-subtotal-row">
+        <span>Total Estimado:</span>
+        <strong class="cart-total-price" id="cartTotalPrice">$0</strong>
+      </div>
+      <p class="cart-notes">
+        <i data-lucide="info"></i>
+        Al presionar el botón se abrirá WhatsApp con el detalle listo para acordar entrega y método de pago.
+      </p>
+      <button class="btn btn-whatsapp btn-block btn-lg" id="checkoutWhatsappBtn">
+        <i data-lucide="message-circle"></i>
+        Finalizar Pedido por WhatsApp
+      </button>
+      <button class="btn btn-outline-light btn-block btn-sm" id="clearCartBtn">
+        Vaciar Carrito
+      </button>
+    </div>
+  </aside>
+
+  <!-- LIGHTBOX MODAL FOR IMAGES -->
+  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox-backdrop" onclick="closeLightbox()"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar vista"><i data-lucide="x"></i></button>
+      <img id="lightboxImg" src="" alt="Vista ampliada del producto" />
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATIONS -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Main JavaScript File -->
+  <script src="app.js"></script>
+</body>
+</html>

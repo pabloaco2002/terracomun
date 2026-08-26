@@ -1,0 +1,553 @@
+/**
+ * TERRA COMÚN - INTERACTIVE APPLICATION JAVASCRIPT
+ * Modern UI/UX implementation with reactive shopping cart, 
+ * WhatsApp checkout builder, ecological calculator, and lightbox.
+ */
+
+// --- 1. PRODUCT CATALOG DATA ---
+const PRODUCTS_DATA = [
+  {
+    id: "kit-inicial",
+    title: "Kit Inicial Terra Común",
+    category: "kits",
+    categoryLabel: "Kit con Soporte",
+    description: "Soporte permanente calado de diseño exclusivo + 1 pastilla desinfectante natural del aroma de tu elección.",
+    price: 3500,
+    priceFormatted: "$3.500",
+    badge: "Más Elegido",
+    image: "WhatsApp Image 2026-08-26 at 3.46.18 PM.jpeg",
+    scents: ["Limón", "Lavanda", "Eucalipto", "Jacarandá"],
+    selectedScent: "Limón"
+  },
+  {
+    id: "pastilla-individual",
+    title: "Pastilla de Reposición Individual",
+    category: "pastillas",
+    categoryLabel: "Pastilla Ecológica",
+    description: "Pastilla sólida desinfectante artesanal de larga duración (+150 descargas). 100% biodegradable sin plásticos.",
+    price: 1800,
+    priceFormatted: "$1.800",
+    badge: "Recarga Verde",
+    image: "WhatsApp Image 2026-08-26 at 3.46.16 PM.jpeg",
+    scents: ["Limón", "Lavanda", "Eucalipto", "Jacarandá"],
+    selectedScent: "Lavanda"
+  },
+  {
+    id: "pack-trio",
+    title: "Pack Trío Aromático (3 Pastillas)",
+    category: "packs",
+    categoryLabel: "Pack Ahorro",
+    description: "Lleva 3 pastillas de reposición a precio promocional y combina tus fragancias botánicas favoritas.",
+    price: 4900,
+    priceFormatted: "$4.900",
+    badge: "Ahorro 15%",
+    image: "WhatsApp Image 2026-08-26 at 3.46.15 PM (1).jpeg",
+    scents: ["Surtido Botánico", "Limón x3", "Lavanda x3", "Eucalipto x3"],
+    selectedScent: "Surtido Botánico"
+  },
+  {
+    id: "kit-familiar",
+    title: "Kit Completo 2 Baños (2 Soportes + 4 Pastillas)",
+    category: "kits",
+    categoryLabel: "Kit Familiar",
+    description: "Ideal para hogares con dos baños. Incluye 2 soportes reutilizables y 4 pastillas desinfectantes artesanales.",
+    price: 8900,
+    priceFormatted: "$8.900",
+    badge: "Dúo Hogar",
+    image: "WhatsApp Image 2026-08-26 at 3.46.15 PM.jpeg",
+    scents: ["Surtido Cuatro Aromas", "Puro Limón & Lavanda"],
+    selectedScent: "Surtido Cuatro Aromas"
+  },
+  {
+    id: "pack-semestral",
+    title: "Pack Semestral Zero Waste (6 Pastillas)",
+    category: "packs",
+    categoryLabel: "Pack Ahorro",
+    description: "Tranquilidad y frescura botánica para 6 meses. La opción más económica y ecológica para tu hogar.",
+    price: 9200,
+    priceFormatted: "$9.200",
+    badge: "Mejor Valor",
+    image: "WhatsApp Image 2026-08-26 at 3.46.18 PM (1).jpeg",
+    scents: ["Surtido Botánico Completo", "Aroma a Elección"],
+    selectedScent: "Surtido Botánico Completo"
+  }
+];
+
+// --- 2. SHOPPING CART STATE ---
+let cart = JSON.parse(localStorage.getItem("terraComunCart") || "[]");
+
+// --- 3. DOM ELEMENTS ---
+const productsContainer = document.getElementById("productsContainer");
+const catalogFilters = document.getElementById("catalogFilters");
+const cartDrawer = document.getElementById("cartDrawer");
+const cartBackdrop = document.getElementById("cartBackdrop");
+const openCartBtn = document.getElementById("openCartBtn");
+const closeCartBtn = document.getElementById("closeCartBtn");
+const cartItemsContainer = document.getElementById("cartItemsContainer");
+const cartTotalPrice = document.getElementById("cartTotalPrice");
+const cartCountBadge = document.getElementById("cartCountBadge");
+const checkoutWhatsappBtn = document.getElementById("checkoutWhatsappBtn");
+const clearCartBtn = document.getElementById("clearCartBtn");
+const toastContainer = document.getElementById("toastContainer");
+const navbar = document.getElementById("navbar");
+const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+const mainNav = document.getElementById("mainNav");
+
+// Intro Screen DOM Elements
+const brandIntro = document.getElementById("brandIntro");
+const enterSiteBtn = document.getElementById("enterSiteBtn");
+const skipIntroBtn = document.getElementById("skipIntroBtn");
+const replayIntroBtn = document.getElementById("replayIntroBtn");
+
+// Calculator DOM elements
+const peopleSlider = document.getElementById("peopleSlider");
+const monthsSlider = document.getElementById("monthsSlider");
+const peopleCountDisplay = document.getElementById("peopleCountDisplay");
+const monthsCountDisplay = document.getElementById("monthsCountDisplay");
+const plasticSavedVal = document.getElementById("plasticSavedVal");
+const waterLitresVal = document.getElementById("waterLitresVal");
+
+// --- 4. INITIALIZATION ---
+document.addEventListener("DOMContentLoaded", () => {
+  initBrandIntro();
+  renderProducts("all");
+  updateCartUI();
+  initCalculator();
+  initFAQ();
+  initScrollEffects();
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+});
+
+// --- 5. RENDER PRODUCTS ---
+function renderProducts(filterCategory = "all") {
+  if (!productsContainer) return;
+
+  const filtered = filterCategory === "all" 
+    ? PRODUCTS_DATA 
+    : PRODUCTS_DATA.filter(p => p.category === filterCategory);
+
+  productsContainer.innerHTML = filtered.map(product => {
+    return `
+      <article class="product-card" data-id="${product.id}">
+        ${product.badge ? `<span class="product-card-badge">${product.badge}</span>` : ""}
+        
+        <div class="product-img-wrapper" onclick="openLightbox('${product.image}')">
+          <img src="${product.image}" alt="${product.title}" loading="lazy" />
+          <div class="product-quick-view" title="Ver imagen ampliada">
+            <i data-lucide="maximize-2"></i>
+          </div>
+        </div>
+
+        <div class="product-body">
+          <span class="product-category">${product.categoryLabel}</span>
+          <h3 class="product-title">${product.title}</h3>
+          <p class="product-desc">${product.description}</p>
+
+          <div class="product-scent-selector">
+            <label class="scent-label">Selecciona la variedad / aroma:</label>
+            <div class="scent-pills-row" id="scentRow-${product.id}">
+              ${product.scents.map(scent => `
+                <button 
+                  type="button" 
+                  class="scent-pill-btn ${scent === product.selectedScent ? 'active' : ''}" 
+                  onclick="selectProductScent('${product.id}', '${scent}')"
+                >
+                  ${scent}
+                </button>
+              `).join("")}
+            </div>
+          </div>
+
+          <div class="product-footer">
+            <div class="product-price-wrapper">
+              <span class="price-unit">Precio por unidad</span>
+              <span class="product-price">${product.priceFormatted}</span>
+            </div>
+            <button 
+              class="btn btn-primary btn-add-cart" 
+              onclick="addToCart('${product.id}')"
+            >
+              <i data-lucide="plus"></i>
+              <span>Agregar</span>
+            </button>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+}
+
+// Scent selector handler
+window.selectProductScent = function(productId, scent) {
+  const product = PRODUCTS_DATA.find(p => p.id === productId);
+  if (product) {
+    product.selectedScent = scent;
+    const scentRow = document.getElementById(`scentRow-${productId}`);
+    if (scentRow) {
+      const buttons = scentRow.querySelectorAll(".scent-pill-btn");
+      buttons.forEach(btn => {
+        if (btn.textContent.trim() === scent) {
+          btn.classList.add("active");
+        } else {
+          btn.classList.remove("active");
+        }
+      });
+    }
+  }
+};
+
+// Filter tabs handler
+if (catalogFilters) {
+  catalogFilters.addEventListener("click", (e) => {
+    const tab = e.target.closest(".filter-tab");
+    if (!tab) return;
+
+    catalogFilters.querySelectorAll(".filter-tab").forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
+
+    const filter = tab.dataset.filter;
+    renderProducts(filter);
+  });
+}
+
+// --- 6. CART MANAGEMENT ---
+window.addToCart = function(productId) {
+  const product = PRODUCTS_DATA.find(p => p.id === productId);
+  if (!product) return;
+
+  const currentScent = product.selectedScent || product.scents[0];
+  const cartItemId = `${product.id}-${currentScent}`;
+
+  const existingIndex = cart.findIndex(item => item.cartItemId === cartItemId);
+  if (existingIndex > -1) {
+    cart[existingIndex].quantity += 1;
+  } else {
+    cart.push({
+      cartItemId: cartItemId,
+      id: product.id,
+      title: product.title,
+      scent: currentScent,
+      price: product.price,
+      priceFormatted: product.priceFormatted,
+      image: product.image,
+      quantity: 1
+    });
+  }
+
+  saveCart();
+  updateCartUI();
+  showToast(`¡"${product.title} (${currentScent})" añadido al pedido!`);
+  openCartDrawer();
+};
+
+function updateQuantity(cartItemId, change) {
+  const itemIndex = cart.findIndex(item => item.cartItemId === cartItemId);
+  if (itemIndex > -1) {
+    cart[itemIndex].quantity += change;
+    if (cart[itemIndex].quantity <= 0) {
+      cart.splice(itemIndex, 1);
+    }
+    saveCart();
+    updateCartUI();
+  }
+}
+window.updateQuantity = updateQuantity;
+
+function removeFromCart(cartItemId) {
+  cart = cart.filter(item => item.cartItemId !== cartItemId);
+  saveCart();
+  updateCartUI();
+  showToast("Producto eliminado del pedido");
+}
+window.removeFromCart = removeFromCart;
+
+function clearCart() {
+  cart = [];
+  saveCart();
+  updateCartUI();
+  showToast("Carrito vaciado");
+}
+
+function saveCart() {
+  localStorage.setItem("terraComunCart", JSON.stringify(cart));
+}
+
+function updateCartUI() {
+  const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+  if (cartCountBadge) {
+    cartCountBadge.textContent = totalCount;
+  }
+
+  if (cartTotalPrice) {
+    cartTotalPrice.textContent = `$${totalPrice.toLocaleString("es-AR")}`;
+  }
+
+  if (!cartItemsContainer) return;
+
+  if (cart.length === 0) {
+    cartItemsContainer.innerHTML = `
+      <div class="cart-empty-state">
+        <i data-lucide="shopping-bag"></i>
+        <h4>Tu carrito está vacío</h4>
+        <p>Explora nuestro catálogo y agrega pastillas o kits ecológicos para comenzar.</p>
+      </div>
+    `;
+  } else {
+    cartItemsContainer.innerHTML = cart.map(item => `
+      <div class="cart-item">
+        <img src="${item.image}" alt="${item.title}" class="cart-item-img" />
+        <div class="cart-item-info">
+          <h4 class="cart-item-title">${item.title}</h4>
+          <div class="cart-item-scent">Aroma: <strong>${item.scent}</strong></div>
+          <div class="cart-item-bottom">
+            <span class="cart-item-price">$${(item.price * item.quantity).toLocaleString("es-AR")}</span>
+            <div class="cart-qty-controls">
+              <button class="qty-btn" onclick="updateQuantity('${item.cartItemId}', -1)" aria-label="Disminuir cantidad">-</button>
+              <span class="qty-number">${item.quantity}</span>
+              <button class="qty-btn" onclick="updateQuantity('${item.cartItemId}', 1)" aria-label="Aumentar cantidad">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+}
+
+// --- 7. CART DRAWER CONTROLS ---
+function openCartDrawer() {
+  if (cartDrawer && cartBackdrop) {
+    cartDrawer.classList.add("open");
+    cartBackdrop.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+}
+
+function closeCartDrawer() {
+  if (cartDrawer && cartBackdrop) {
+    cartDrawer.classList.remove("open");
+    cartBackdrop.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+}
+
+if (openCartBtn) openCartBtn.addEventListener("click", openCartDrawer);
+if (closeCartBtn) closeCartBtn.addEventListener("click", closeCartDrawer);
+if (cartBackdrop) cartBackdrop.addEventListener("click", closeCartDrawer);
+if (clearCartBtn) clearCartBtn.addEventListener("click", clearCart);
+
+// --- 8. WHATSAPP ORDER BUILDER ---
+if (checkoutWhatsappBtn) {
+  checkoutWhatsappBtn.addEventListener("click", () => {
+    if (cart.length === 0) {
+      showToast("Agrega al menos un producto a tu pedido.");
+      return;
+    }
+
+    const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+    let message = `🌱 *NUEVO PEDIDO - TERRA COMÚN* 🌱\n\n`;
+    message += `Hola! Quisiera realizar el siguiente pedido ecológico:\n\n`;
+
+    cart.forEach((item, idx) => {
+      message += `${idx + 1}. *${item.quantity}x ${item.title}*\n`;
+      message += `   └ Aroma: _${item.scent}_\n`;
+      message += `   └ Subtotal: $${(item.price * item.quantity).toLocaleString("es-AR")}\n\n`;
+    });
+
+    message += `──────────────────────\n`;
+    message += `📦 *Total de artículos:* ${totalCount}\n`;
+    message += `💰 *Monto Total Estimado:* $${totalPrice.toLocaleString("es-AR")}\n\n`;
+    message += `¿Podrían indicarme formas de pago (transferencia/efectivo) y tiempos de entrega/retiro? ¡Muchas gracias!`;
+
+    const encodedMsg = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/?text=${encodedMsg}`;
+
+    window.open(whatsappUrl, "_blank");
+  });
+}
+
+// --- 9. ECOLOGICAL IMPACT CALCULATOR ---
+function initCalculator() {
+  if (!peopleSlider || !monthsSlider) return;
+
+  function calculate() {
+    const people = parseInt(peopleSlider.value, 10);
+    const months = parseInt(monthsSlider.value, 10);
+
+    peopleCountDisplay.textContent = `${people} ${people === 1 ? 'persona' : 'personas'}`;
+    const yearsText = months >= 12 ? ` (${(months / 12).toFixed(1).replace('.0', '')} ${months === 12 ? 'año' : 'años'})` : '';
+    monthsCountDisplay.textContent = `${months} meses${yearsText}`;
+
+    // Calculation formulas:
+    // Avg traditional disposable hanger plastic discarded: 1 per person per month
+    const plasticSaved = Math.round(people * months * 1.0);
+    // Avg toilet water flush freed from toxic synthetic bleaches/chlorine: ~300 liters/person/month
+    const waterSaved = Math.round(people * months * 300);
+
+    if (plasticSavedVal) plasticSavedVal.textContent = plasticSaved.toLocaleString("es-AR");
+    if (waterLitresVal) waterLitresVal.textContent = waterSaved.toLocaleString("es-AR");
+
+    // Dynamic formula detail breakdown
+    const plasticFormulaLive = document.getElementById("plasticFormulaLive");
+    const plasticFormulaResult = document.getElementById("plasticFormulaResult");
+    const waterFormulaLive = document.getElementById("waterFormulaLive");
+    const waterFormulaResult = document.getElementById("waterFormulaResult");
+
+    if (plasticFormulaLive) {
+      plasticFormulaLive.textContent = `${people} pers. × ${months} meses × 1 canastilla/mes`;
+    }
+    if (plasticFormulaResult) {
+      plasticFormulaResult.textContent = `${plasticSaved} envases`;
+    }
+    if (waterFormulaLive) {
+      waterFormulaLive.textContent = `${people} pers. × ${months} meses × 300 L/mes`;
+    }
+    if (waterFormulaResult) {
+      waterFormulaResult.textContent = `${waterSaved.toLocaleString("es-AR")} litros`;
+    }
+  }
+
+  peopleSlider.addEventListener("input", calculate);
+  monthsSlider.addEventListener("input", calculate);
+  calculate();
+}
+
+// --- 10. FAQ ACCORDION ---
+function initFAQ() {
+  const faqItems = document.querySelectorAll(".faq-item");
+  faqItems.forEach(item => {
+    const question = item.querySelector(".faq-question");
+    question.addEventListener("click", () => {
+      const isOpen = item.classList.contains("active");
+      
+      // Close other items
+      faqItems.forEach(other => {
+        other.classList.remove("active");
+        other.querySelector(".faq-question").setAttribute("aria-expanded", "false");
+      });
+
+      if (!isOpen) {
+        item.classList.add("active");
+        question.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+}
+
+// --- 11. LIGHTBOX MODAL ---
+window.openLightbox = function(imageSrc) {
+  const modal = document.getElementById("lightboxModal");
+  const modalImg = document.getElementById("lightboxImg");
+  if (modal && modalImg) {
+    modalImg.src = imageSrc;
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+};
+
+window.closeLightbox = function() {
+  const modal = document.getElementById("lightboxModal");
+  if (modal) {
+    modal.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+};
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeLightbox();
+    closeCartDrawer();
+  }
+});
+
+// --- 12. TOAST NOTIFICATIONS ---
+function showToast(message) {
+  if (!toastContainer) return;
+  const toast = document.createElement("div");
+  toast.className = "toast";
+  toast.innerHTML = `<i data-lucide="check-circle"></i> <span>${message}</span>`;
+  toastContainer.appendChild(toast);
+
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+
+  setTimeout(() => {
+    toast.remove();
+  }, 3000);
+}
+
+// --- 13. NAVBAR & MOBILE MENU ---
+function initScrollEffects() {
+  window.addEventListener("scroll", () => {
+    if (navbar) {
+      if (window.scrollY > 40) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    }
+  });
+
+  if (mobileMenuBtn && mainNav) {
+    mobileMenuBtn.addEventListener("click", () => {
+      mainNav.classList.toggle("open");
+    });
+
+    mainNav.querySelectorAll(".nav-link").forEach(link => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("open");
+      });
+    });
+  }
+}
+
+// --- 14. BRAND INTRO & LEAF UNVEIL CONTROLLER ---
+function initBrandIntro() {
+  if (!brandIntro) return;
+
+  // Function to open site with leaf curtain animation
+  function openSite() {
+    brandIntro.classList.add("unveiling");
+    document.body.style.overflow = "";
+
+    // Micro-toast welcoming the user
+    setTimeout(() => {
+      showToast("🌿 ¡Bienvenido a Terra Común! « Cuidar nos une »");
+    }, 600);
+  }
+
+  if (enterSiteBtn) {
+    enterSiteBtn.addEventListener("click", openSite);
+  }
+
+  if (skipIntroBtn) {
+    skipIntroBtn.addEventListener("click", openSite);
+  }
+
+  // Allow replaying intro from navbar
+  if (replayIntroBtn) {
+    replayIntroBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      brandIntro.classList.remove("unveiling");
+      document.body.style.overflow = "hidden";
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  }
+}
+
