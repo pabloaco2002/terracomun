@@ -11,39 +11,33 @@ const PRODUCTS_DATA = [
     title: "Kit Inicial Terra Común",
     category: "kits",
     categoryLabel: "Kit con Canasta",
-    description: "Canasta soporte permanente reutilizable + 2 pastillas desinfectantes botánicas a elección. La opción más completa para comenzar.",
+    description: "Canasta soporte permanente reutilizable + 2 pastillas desinfectantes botánicas sólidas (fórmula natural con hojas de limón, mandarina, romero, bicarbonato, aceite de coco y glicerina). La opción más completa para comenzar.",
     price: 4500,
     priceFormatted: "$4.500",
     badge: "Más Recomendado",
-    image: "WhatsApp Image 2026-08-26 at 3.46.18 PM.jpeg",
-    scents: ["Limón", "Lavanda", "Eucalipto", "Jacarandá", "Surtido Dúo"],
-    selectedScent: "Limón"
+    image: "kit-inicial-2-pastillas.jpeg"
   },
   {
     id: "kit-comun",
     title: "Kit Común Terra Común",
     category: "kits",
     categoryLabel: "Kit con Canasta",
-    description: "Canasta soporte permanente reutilizable + 1 pastilla desinfectante botánica artesanal. Ideal para probar la experiencia Zero Waste.",
+    description: "Canasta soporte permanente reutilizable + 1 pastilla desinfectante botánica artesanal de fórmula combinada (limón, mandarina, romero, bicarbonato y aceite de coco). Ideal para probar la experiencia Zero Waste.",
     price: 2500,
     priceFormatted: "$2.500",
     badge: "Esencial",
-    image: "WhatsApp Image 2026-08-26 at 3.46.15 PM.jpeg",
-    scents: ["Limón", "Lavanda", "Eucalipto", "Jacarandá"],
-    selectedScent: "Limón"
+    image: "kit-comun-1-pastilla.jpeg"
   },
   {
     id: "kit-reposicion",
     title: "Kit de Reposición (3 Pastillas)",
     category: "reposicion",
     categoryLabel: "Pack Reposición",
-    description: "3 pastillas desinfectantes sólidas artesanales de larga duración (+450 descargas en total). 100% biodegradables y libres de plástico.",
+    description: "3 pastillas desinfectantes sólidas artesanales de larga duración (+450 descargas en total). Fórmula combinada con hojas de limón, mandarina, romero, bicarbonato, aceite de coco y glicerina vegetal.",
     price: 6000,
     priceFormatted: "$6.000",
     badge: "Pack Ahorro",
-    image: "WhatsApp Image 2026-08-26 at 3.46.15 PM (1).jpeg",
-    scents: ["Surtido Trío Botánico", "Puro Limón x3", "Pura Lavanda x3", "Puro Eucalipto x3", "Puro Jacarandá x3"],
-    selectedScent: "Surtido Trío Botánico"
+    image: "kit-reposicion-3-pastillas.jpeg"
   }
 ];
 
@@ -119,19 +113,9 @@ function renderProducts(filterCategory = "all") {
           <h3 class="product-title">${product.title}</h3>
           <p class="product-desc">${product.description}</p>
 
-          <div class="product-scent-selector">
-            <label class="scent-label">Selecciona la variedad / aroma:</label>
-            <div class="scent-pills-row" id="scentRow-${product.id}">
-              ${product.scents.map(scent => `
-                <button 
-                  type="button" 
-                  class="scent-pill-btn ${scent === product.selectedScent ? 'active' : ''}" 
-                  onclick="selectProductScent('${product.id}', '${scent}')"
-                >
-                  ${scent}
-                </button>
-              `).join("")}
-            </div>
+          <div class="product-formula-badge">
+            <i data-lucide="sparkles"></i>
+            <span>Fórmula Botánica Única (Limón, Mandarina, Romero, Bicarbonato, Aceite de Coco y Glicerina)</span>
           </div>
 
           <div class="product-footer">
@@ -157,25 +141,6 @@ function renderProducts(filterCategory = "all") {
   }
 }
 
-// Scent selector handler
-window.selectProductScent = function(productId, scent) {
-  const product = PRODUCTS_DATA.find(p => p.id === productId);
-  if (product) {
-    product.selectedScent = scent;
-    const scentRow = document.getElementById(`scentRow-${productId}`);
-    if (scentRow) {
-      const buttons = scentRow.querySelectorAll(".scent-pill-btn");
-      buttons.forEach(btn => {
-        if (btn.textContent.trim() === scent) {
-          btn.classList.add("active");
-        } else {
-          btn.classList.remove("active");
-        }
-      });
-    }
-  }
-};
-
 // Filter tabs handler
 if (catalogFilters) {
   catalogFilters.addEventListener("click", (e) => {
@@ -195,8 +160,7 @@ window.addToCart = function(productId) {
   const product = PRODUCTS_DATA.find(p => p.id === productId);
   if (!product) return;
 
-  const currentScent = product.selectedScent || product.scents[0];
-  const cartItemId = `${product.id}-${currentScent}`;
+  const cartItemId = product.id;
 
   const existingIndex = cart.findIndex(item => item.cartItemId === cartItemId);
   if (existingIndex > -1) {
@@ -206,7 +170,6 @@ window.addToCart = function(productId) {
       cartItemId: cartItemId,
       id: product.id,
       title: product.title,
-      scent: currentScent,
       price: product.price,
       priceFormatted: product.priceFormatted,
       image: product.image,
@@ -216,7 +179,7 @@ window.addToCart = function(productId) {
 
   saveCart();
   updateCartUI();
-  showToast(`¡"${product.title} (${currentScent})" añadido al pedido!`);
+  showToast(`¡"${product.title}" añadido al pedido!`);
   openCartDrawer();
 };
 
@@ -280,7 +243,7 @@ function updateCartUI() {
         <img src="${item.image}" alt="${item.title}" class="cart-item-img" />
         <div class="cart-item-info">
           <h4 class="cart-item-title">${item.title}</h4>
-          <div class="cart-item-scent">Aroma: <strong>${item.scent}</strong></div>
+          <div class="cart-item-scent"><i data-lucide="sparkles"></i> Fórmula Multi-esencia</div>
           <div class="cart-item-bottom">
             <span class="cart-item-price">$${(item.price * item.quantity).toLocaleString("es-AR")}</span>
             <div class="cart-qty-controls">
@@ -337,7 +300,7 @@ if (checkoutWhatsappBtn) {
 
     cart.forEach((item, idx) => {
       message += `${idx + 1}. *${item.quantity}x ${item.title}*\n`;
-      message += `   └ Aroma: _${item.scent}_\n`;
+      message += `   └ Fórmula: _Combinación Botánica Multi-esencia_\n`;
       message += `   └ Subtotal: $${(item.price * item.quantity).toLocaleString("es-AR")}\n\n`;
     });
 
