@@ -456,10 +456,25 @@ function initScrollEffects() {
 function initBrandIntro() {
   if (!brandIntro) return;
 
+  // Prevent browser from restoring middle-of-page scroll position on reload
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  // Ensure page starts at the very top (header) and body cannot scroll while intro is visible
+  window.scrollTo(0, 0);
+  document.body.style.overflow = "hidden";
+
   // Function to open site with leaf curtain animation
   function openSite() {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     brandIntro.classList.add("unveiling");
     document.body.style.overflow = "";
+
+    // Keep page at the top when body unlock takes effect
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 50);
 
     // Micro-toast welcoming the user
     setTimeout(() => {
