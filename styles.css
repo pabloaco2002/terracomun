@@ -2924,4 +2924,206 @@ button {
   }
 }
 
+/* ==========================================================================
+   AUTORIDADES DEL PROYECTO (MESA DIRECTIVA)
+   ========================================================================== */
+.authorities-block {
+  margin-top: 4rem;
+}
+
+.authorities-header {
+  margin-bottom: 2.5rem;
+}
+
+.authorities-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.authorities-subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.authorities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.authority-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 1.5rem 1.75rem;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all var(--transition-normal);
+  overflow: hidden;
+}
+
+.authority-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(30, 81, 56, 0.25);
+}
+
+.authority-card.card-highlight {
+  border-color: rgba(122, 62, 187, 0.3);
+  background: linear-gradient(180deg, #ffffff 0%, #faf7fe 100%);
+}
+
+.authority-card-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: 0.725rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.authority-card.card-highlight .authority-card-badge {
+  background: var(--color-accent-purple-soft);
+  color: var(--color-accent-purple);
+}
+
+.authority-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 8px 18px rgba(20, 53, 39, 0.15);
+  transition: transform var(--transition-bounce);
+}
+
+.authority-card:hover .authority-avatar {
+  transform: scale(1.08);
+}
+
+.authority-card.card-highlight .authority-avatar {
+  background: linear-gradient(135deg, var(--color-accent-purple-light), var(--color-accent-purple));
+  box-shadow: 0 8px 18px rgba(122, 62, 187, 0.25);
+}
+
+.avatar-icon-wrap i {
+  width: 32px;
+  height: 32px;
+  color: #ffffff;
+}
+
+.authority-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.authority-name {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.25rem;
+}
+
+.authority-role {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-accent-purple);
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.authority-bio {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.authority-action-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.authority-phone-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--text-main);
+  background: var(--bg-surface-alt);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+}
+
+.authority-phone-tag i {
+  width: 14px;
+  height: 14px;
+  color: var(--color-primary);
+}
+
+.btn-authority-wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #25d366;
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2);
+}
+
+.btn-authority-wa:hover {
+  background: #1eb954;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
+}
+
+.btn-authority-wa i {
+  width: 16px;
+  height: 16px;
+}
+
+.tiktok-svg-icon {
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform var(--transition-fast);
+}
+
+.social-icon:hover .tiktok-svg-icon {
+  transform: scale(1.1);
+}
+
+
 

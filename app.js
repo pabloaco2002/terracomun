@@ -10,66 +10,40 @@ const PRODUCTS_DATA = [
     id: "kit-inicial",
     title: "Kit Inicial Terra Común",
     category: "kits",
-    categoryLabel: "Kit con Soporte",
-    description: "Soporte permanente calado de diseño exclusivo + 1 pastilla desinfectante natural del aroma de tu elección.",
-    price: 3500,
-    priceFormatted: "$3.500",
-    badge: "Más Elegido",
+    categoryLabel: "Kit con Canasta",
+    description: "Canasta soporte permanente reutilizable + 2 pastillas desinfectantes botánicas a elección. La opción más completa para comenzar.",
+    price: 4500,
+    priceFormatted: "$4.500",
+    badge: "Más Recomendado",
     image: "WhatsApp Image 2026-08-26 at 3.46.18 PM.jpeg",
+    scents: ["Limón", "Lavanda", "Eucalipto", "Jacarandá", "Surtido Dúo"],
+    selectedScent: "Limón"
+  },
+  {
+    id: "kit-comun",
+    title: "Kit Común Terra Común",
+    category: "kits",
+    categoryLabel: "Kit con Canasta",
+    description: "Canasta soporte permanente reutilizable + 1 pastilla desinfectante botánica artesanal. Ideal para probar la experiencia Zero Waste.",
+    price: 2500,
+    priceFormatted: "$2.500",
+    badge: "Esencial",
+    image: "WhatsApp Image 2026-08-26 at 3.46.15 PM.jpeg",
     scents: ["Limón", "Lavanda", "Eucalipto", "Jacarandá"],
     selectedScent: "Limón"
   },
   {
-    id: "pastilla-individual",
-    title: "Pastilla de Reposición Individual",
-    category: "pastillas",
-    categoryLabel: "Pastilla Ecológica",
-    description: "Pastilla sólida desinfectante artesanal de larga duración (+150 descargas). 100% biodegradable sin plásticos.",
-    price: 1800,
-    priceFormatted: "$1.800",
-    badge: "Recarga Verde",
-    image: "WhatsApp Image 2026-08-26 at 3.46.16 PM.jpeg",
-    scents: ["Limón", "Lavanda", "Eucalipto", "Jacarandá"],
-    selectedScent: "Lavanda"
-  },
-  {
-    id: "pack-trio",
-    title: "Pack Trío Aromático (3 Pastillas)",
-    category: "packs",
-    categoryLabel: "Pack Ahorro",
-    description: "Lleva 3 pastillas de reposición a precio promocional y combina tus fragancias botánicas favoritas.",
-    price: 4900,
-    priceFormatted: "$4.900",
-    badge: "Ahorro 15%",
+    id: "kit-reposicion",
+    title: "Kit de Reposición (3 Pastillas)",
+    category: "reposicion",
+    categoryLabel: "Pack Reposición",
+    description: "3 pastillas desinfectantes sólidas artesanales de larga duración (+450 descargas en total). 100% biodegradables y libres de plástico.",
+    price: 6000,
+    priceFormatted: "$6.000",
+    badge: "Pack Ahorro",
     image: "WhatsApp Image 2026-08-26 at 3.46.15 PM (1).jpeg",
-    scents: ["Surtido Botánico", "Limón x3", "Lavanda x3", "Eucalipto x3"],
-    selectedScent: "Surtido Botánico"
-  },
-  {
-    id: "kit-familiar",
-    title: "Kit Completo 2 Baños (2 Soportes + 4 Pastillas)",
-    category: "kits",
-    categoryLabel: "Kit Familiar",
-    description: "Ideal para hogares con dos baños. Incluye 2 soportes reutilizables y 4 pastillas desinfectantes artesanales.",
-    price: 8900,
-    priceFormatted: "$8.900",
-    badge: "Dúo Hogar",
-    image: "WhatsApp Image 2026-08-26 at 3.46.15 PM.jpeg",
-    scents: ["Surtido Cuatro Aromas", "Puro Limón & Lavanda"],
-    selectedScent: "Surtido Cuatro Aromas"
-  },
-  {
-    id: "pack-semestral",
-    title: "Pack Semestral Zero Waste (6 Pastillas)",
-    category: "packs",
-    categoryLabel: "Pack Ahorro",
-    description: "Tranquilidad y frescura botánica para 6 meses. La opción más económica y ecológica para tu hogar.",
-    price: 9200,
-    priceFormatted: "$9.200",
-    badge: "Mejor Valor",
-    image: "WhatsApp Image 2026-08-26 at 3.46.18 PM (1).jpeg",
-    scents: ["Surtido Botánico Completo", "Aroma a Elección"],
-    selectedScent: "Surtido Botánico Completo"
+    scents: ["Surtido Trío Botánico", "Puro Limón x3", "Pura Lavanda x3", "Puro Eucalipto x3", "Puro Jacarandá x3"],
+    selectedScent: "Surtido Trío Botánico"
   }
 ];
 
@@ -373,7 +347,7 @@ if (checkoutWhatsappBtn) {
     message += `¿Podrían indicarme formas de pago (transferencia/efectivo) y tiempos de entrega/retiro? ¡Muchas gracias!`;
 
     const encodedMsg = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/?text=${encodedMsg}`;
+    const whatsappUrl = `https://wa.me/5493884861994?text=${encodedMsg}`;
 
     window.open(whatsappUrl, "_blank");
   });
