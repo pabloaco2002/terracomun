@@ -15,7 +15,7 @@ const PRODUCTS_DATA = [
     price: 4500,
     priceFormatted: "$4.500",
     badge: "Más Recomendado",
-    image: "kit-inicial-2-pastillas.jpeg"
+    image: "kit-inicial-2-pastillas.webp"
   },
   {
     id: "kit-comun",
@@ -26,7 +26,7 @@ const PRODUCTS_DATA = [
     price: 2500,
     priceFormatted: "$2.500",
     badge: "Esencial",
-    image: "kit-comun-1-pastilla.jpeg"
+    image: "kit-comun-1-pastilla.webp"
   },
   {
     id: "kit-reposicion",
@@ -37,7 +37,7 @@ const PRODUCTS_DATA = [
     price: 6000,
     priceFormatted: "$6.000",
     badge: "Pack Ahorro",
-    image: "kit-reposicion-3-pastillas.jpeg"
+    image: "kit-reposicion-3-pastillas.webp"
   }
 ];
 
@@ -429,15 +429,22 @@ function showToast(message) {
 
 // --- 13. NAVBAR & MOBILE MENU ---
 function initScrollEffects() {
+  let ticking = false;
   window.addEventListener("scroll", () => {
-    if (navbar) {
-      if (window.scrollY > 40) {
-        navbar.classList.add("scrolled");
-      } else {
-        navbar.classList.remove("scrolled");
-      }
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        if (navbar) {
+          if (window.scrollY > 40) {
+            navbar.classList.add("scrolled");
+          } else {
+            navbar.classList.remove("scrolled");
+          }
+        }
+        ticking = false;
+      });
+      ticking = true;
     }
-  });
+  }, { passive: true });
 
   if (mobileMenuBtn && mainNav) {
     mobileMenuBtn.addEventListener("click", () => {

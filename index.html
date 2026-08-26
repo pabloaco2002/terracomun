@@ -36,8 +36,8 @@
   <meta name="twitter:image" content="https://terracomun.vercel.app/terracomunlogo.jpeg" />
 
   <!-- Favicons -->
-  <link rel="icon" type="image/png" href="terracomunlogosinfondo.jpeg.png" />
-  <link rel="apple-touch-icon" href="https://terracomun.vercel.app/terracomunlogo.jpeg" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
 
   <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -47,7 +47,7 @@
     rel="stylesheet" />
 
   <!-- Lucide Icons (CDN) -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@latest" defer></script>
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -91,7 +91,7 @@
 
         <!-- Logo Image with Glowing Leaf & Flower -->
         <div class="intro-logo-visual">
-          <img src="terracomunlogosinfondo.jpeg.png" alt="Terra Común Imagotipo" class="intro-logo-img" />
+          <img src="terracomunlogosinfondo.webp" alt="Terra Común Imagotipo" class="intro-logo-img" width="180" height="180" decoding="async" />
         </div>
 
         <!-- Animated Floating Solid Eco Tablet -->
@@ -164,7 +164,7 @@
   <header class="site-header" id="navbar">
     <div class="container header-container">
       <a href="#" class="brand-link" aria-label="Terra Común Inicio">
-        <img src="terracomunlogosinfondo.jpeg.png" alt="Logo Terra Común" class="nav-logo" />
+        <img src="terracomunlogosinfondo.webp" alt="Logo Terra Común" class="nav-logo" width="44" height="44" decoding="async" />
       </a>
 
       <nav class="main-nav" id="mainNav">
@@ -257,7 +257,7 @@
         <iframe class="hero-video-iframe"
           src="https://www.youtube-nocookie.com/embed/jfvIIB6QzfM?autoplay=1&mute=1&loop=1&playlist=jfvIIB6QzfM&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&playsinline=1&enablejsapi=1"
           title="Video de presentación Terra Común" allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
-          tabindex="-1"></iframe>
+          tabindex="-1" loading="lazy"></iframe>
       </div>
 
       <div class="container hero-grid">
@@ -325,9 +325,9 @@
         <div class="hero-visual-showcase">
           <div class="hero-card-glass">
             <div class="hero-image-wrapper">
-              <img src="WhatsApp Image 2026-08-26 at 3.46.18 PM.jpeg"
+              <img src="WhatsApp Image 2026-08-26 at 3.46.18 PM.webp"
                 alt="Pastilla desinfectante ecológica sólida Terra Común en su soporte reutilizable"
-                class="hero-main-img" id="heroMainImage" />
+                class="hero-main-img" id="heroMainImage" fetchpriority="high" decoding="async" />
               <div class="image-overlay-pill">
                 <i data-lucide="droplet"></i>
                 <span>Liberación activa gradual</span>
@@ -337,7 +337,7 @@
             <!-- Interactive Mini Floater Card -->
             <div class="floating-badge-bottom">
               <div class="floating-brand-icon">
-                <img src="terracomunlogosinfondo.jpeg.png" alt="Terra Común" />
+                <img src="terracomunlogosinfondo.webp" alt="Terra Común" width="32" height="32" decoding="async" />
               </div>
               <div class="floating-badge-info">
                 <h4>Fórmula Botánica Activa</h4>
@@ -815,9 +815,10 @@
 
         <div class="team-school-card">
           <div class="team-photo-container">
-            <img src="WhatsApp Image 2026-08-26 at 3.56.39 PM.jpeg"
+            <img src="WhatsApp Image 2026-08-26 at 3.56.39 PM.webp"
               alt="Equipo de 27 Achievers del Colegio Fasta San Alberto Magno" class="team-group-photo"
-              onclick="openLightbox('WhatsApp Image 2026-08-26 at 3.56.39 PM.jpeg')" />
+              loading="lazy" decoding="async"
+              onclick="openLightbox('WhatsApp Image 2026-08-26 at 3.56.39 PM.webp')" />
             <div class="photo-overlay-tag">
               <i data-lucide="users"></i>
               <span>27 Achievers | Promoción 2026</span>
@@ -826,8 +827,8 @@
 
           <div class="team-info-container">
             <div class="school-header-badge">
-              <img src="WhatsApp Image 2026-08-26 at 4.10.25 PM.jpeg" alt="Escudo Colegio Fasta San Alberto Magno"
-                class="school-shield-img" />
+              <img src="WhatsApp Image 2026-08-26 at 4.10.25 PM.webp" alt="Escudo Colegio Fasta San Alberto Magno"
+                class="school-shield-img" loading="lazy" decoding="async" width="56" height="56" />
               <div>
                 <h3>Colegio Fasta San Alberto Magno</h3>
                 <span class="school-subtag">Empresa Educativa Junior Achievement</span>
@@ -1001,7 +1002,7 @@
       <div class="container">
         <div class="cta-banner-card">
           <div class="cta-banner-content">
-            <img src="terracomunlogosinfondo.jpeg.png" alt="Terra Común" class="cta-logo" />
+            <img src="terracomunlogosinfondo.webp" alt="Terra Común" class="cta-logo" loading="lazy" decoding="async" width="120" height="120" />
             <h2>Súmate a la higiene libre de plásticos</h2>
             <p>Empieza hoy a cuidar tu baño y el planeta con esencias botánicas 100% naturales.</p>
             <div class="cta-actions">
@@ -1021,7 +1022,7 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-col brand-col">
-        <img src="terracomunlogosinfondo.jpeg.png" alt="Terra Común Logo" class="footer-logo" />
+        <img src="terracomunlogosinfondo.webp" alt="Terra Común Logo" class="footer-logo" loading="lazy" decoding="async" width="56" height="56" />
         <p>Desinfectantes sólidos ecológicos y artesanales para inodoros. Frescura botánica y compromiso con el medio
           ambiente.</p>
         <div class="footer-badges">
@@ -1153,7 +1154,7 @@
   <div class="toast-container" id="toastContainer" aria-live="polite"></div>
 
   <!-- Main JavaScript File -->
-  <script src="app.js"></script>
+  <script src="app.js" defer></script>
 </body>
 
 </html>
