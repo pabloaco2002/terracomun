@@ -54,7 +54,7 @@
 
 <body>
 
-  <!-- INTRO ANIMADA / SPLASH SCREEN INTERACTIVO -->
+  <!-- INTRO CINEMÁTICA ANIMADA / SPLASH BOTÁNICO ELEGANTE -->
   <div class="brand-intro-overlay" id="brandIntro" role="dialog" aria-modal="true"
     aria-label="Introducción a Terra Común">
     <!-- Unveil Botanical Wings (Hojas de apertura estilo cortina orgánica) -->
@@ -65,7 +65,12 @@
       <div class="wing-leaf-art"></div>
     </div>
 
-    <!-- Floating Leaves & Petals Particles -->
+    <!-- Ambient Aurora & Energy Lights -->
+    <div class="intro-aurora-glow aura-mint" aria-hidden="true"></div>
+    <div class="intro-aurora-glow aura-violet" aria-hidden="true"></div>
+    <div class="intro-aurora-glow aura-gold" aria-hidden="true"></div>
+
+    <!-- Floating Botanicals & Magic Dust Particles -->
     <div class="floating-botanicals-container" aria-hidden="true">
       <div class="intro-floating-leaf leaf-1">🍃</div>
       <div class="intro-floating-leaf leaf-2">🌿</div>
@@ -74,6 +79,10 @@
       <div class="intro-floating-leaf leaf-5">🥥</div>
       <div class="intro-floating-leaf leaf-6">🌱</div>
       <div class="intro-floating-leaf leaf-7">✨</div>
+      <div class="intro-magic-particle p-1"></div>
+      <div class="intro-magic-particle p-2"></div>
+      <div class="intro-magic-particle p-3"></div>
+      <div class="intro-magic-particle p-4"></div>
     </div>
 
     <!-- Top Skip Control -->
@@ -82,67 +91,87 @@
       <i data-lucide="arrow-right"></i>
     </button>
 
-    <!-- Center Interactive Stage -->
-    <div class="intro-main-stage">
-      <!-- Animated Logo & Tablet Hologram -->
-      <div class="intro-symbol-wrapper">
-        <div class="intro-glow-aura"></div>
-        <div class="intro-leaf-glow"></div>
-
-        <!-- Logo Image with Glowing Leaf & Flower -->
-        <div class="intro-logo-visual">
-          <img src="terracomunlogosinfondo.webp" alt="Terra Común Imagotipo" class="intro-logo-img" width="180" height="180" decoding="async" />
+    <!-- Center Cinematic Stage Container -->
+    <div class="intro-cinema-container" id="introCinemaContainer">
+      
+      <!-- Phase 1: Germination Ring & Botanical Energy Core -->
+      <div class="intro-energy-ring-wrapper" aria-hidden="true">
+        <div class="energy-core-pulse"></div>
+        <div class="energy-orbit-ring ring-1">
+          <span class="orbit-seed seed-lemon" title="Esencia de Limón">🍋</span>
+          <span class="orbit-seed seed-rosemary" title="Esencia de Romero">🌿</span>
         </div>
-
-        <!-- Animated Floating Solid Eco Tablet -->
-        <div class="intro-product-hologram" title="Pastilla sólida artesanal">
-          <div class="intro-tablet-3d">
-            <span class="tablet-core"></span>
-            <span class="tablet-shine"></span>
-            <span class="tablet-scent-dot dot-lemon" title="Hojas de Limón"></span>
-            <span class="tablet-scent-dot dot-mandarin" title="Hojas de Mandarina"></span>
-            <span class="tablet-scent-dot dot-rosemary" title="Hojas de Romero"></span>
-            <span class="tablet-scent-dot dot-coconut" title="Aceite de Coco & Glicerina"></span>
-          </div>
-          <span class="tablet-caption">Pastilla Desinfectante Sólida</span>
+        <div class="energy-orbit-ring ring-2">
+          <span class="orbit-seed seed-mandarin" title="Esencia de Mandarina">🍊</span>
+          <span class="orbit-seed seed-coconut" title="Aceite de Coco">🥥</span>
         </div>
       </div>
 
-      <!-- Typography & Slogan Sequence -->
-      <div class="intro-text-sequence">
-        <div class="intro-badge">
+      <!-- Phase 2: Logo Bloom & Holographic Solid Eco-Tablet -->
+      <div class="intro-hero-logo-box">
+        <div class="intro-logo-flare"></div>
+        <div class="intro-logo-glow-aura"></div>
+        <div class="intro-logo-shine-mask">
+          <img src="terracomunlogosinfondo.webp" alt="Terra Común Imagotipo" class="intro-logo-cinematic-img" width="200" height="200" decoding="async" />
+        </div>
+        
+        <!-- Floating Solid Eco Tablet in 3D perspective -->
+        <div class="intro-tablet-hologram-floating">
+          <div class="intro-tablet-3d-modern">
+            <span class="tablet-core"></span>
+            <span class="tablet-shine"></span>
+            <span class="tablet-scent-dot dot-lemon" title="Limón"></span>
+            <span class="tablet-scent-dot dot-mandarin" title="Mandarina"></span>
+            <span class="tablet-scent-dot dot-rosemary" title="Romero"></span>
+            <span class="tablet-scent-dot dot-coconut" title="Coco & Glicerina"></span>
+          </div>
+          <span class="tablet-floating-badge">Pastilla Sólida Artesanal</span>
+        </div>
+      </div>
+
+      <!-- Phase 3: Brand Reveal & Typography -->
+      <div class="intro-brand-details">
+        <div class="intro-pill-badge">
           <span class="badge-sparkle">✨</span>
-          <span>Innovación Artesanal & Sustentable</span>
+          <span>Innovación Botánica & Sustentable</span>
         </div>
 
-        <!-- Official Brand Slogan from Identity Manual -->
-        <div class="intro-slogan-box">
-          <h2 class="intro-slogan-title">« Cuidar nos une »</h2>
-          <p class="intro-manifesto-sub">
-            La limpieza no debería obligarnos a elegir entre higiene y cuidado ambiental.
-            Cambiamos los químicos y plásticos descartables por una alternativa botánica, artesanal y 100%
-            biodegradable.
+        <h1 class="intro-brand-title">
+          <span class="brand-word-terra">TERRA</span>
+          <span class="brand-word-comun">COMÚN</span>
+        </h1>
+
+        <div class="intro-slogan-wrapper">
+          <p class="intro-slogan-highlight">« Cuidar nos une »</p>
+          <p class="intro-slogan-subtext">
+            Desinfectante sólido botánico para inodoros.
+            Limpieza profunda y aromas puros, <strong>sin plásticos ni químicos descartables</strong>.
           </p>
         </div>
 
-        <div class="intro-tags-row">
-          <span class="intro-pill"><i data-lucide="leaf"></i> 100% Biodegradable</span>
-          <span class="intro-pill"><i data-lucide="shield-check"></i> 0% Plásticos descartables</span>
-          <span class="intro-pill"><i data-lucide="sparkles"></i> Aceites Botánicos Puros</span>
+        <div class="intro-attributes-row">
+          <span class="intro-attr-tag"><i data-lucide="leaf"></i> 100% Biodegradable</span>
+          <span class="intro-attr-tag"><i data-lucide="shield-check"></i> 0% Plásticos</span>
+          <span class="intro-attr-tag"><i data-lucide="sparkles"></i> 4 Esencias Botánicas</span>
         </div>
 
-        <!-- Primary Interactive Button to Enter Site -->
-        <div class="intro-action-container">
-          <button class="btn btn-enter-site" id="enterSiteBtn">
-            <span class="btn-ripple-bg"></span>
+        <!-- Phase 4: Interactive Entry CTA with Progress Bar -->
+        <div class="intro-cta-action-box">
+          <button class="btn btn-enter-site-cinematic" id="enterSiteBtn">
+            <span class="btn-glow-aura"></span>
             <span class="btn-text">Entrar al Sitio</span>
-            <span class="btn-arrow-box">
+            <span class="btn-arrow-circle">
               <i data-lucide="arrow-right"></i>
             </span>
           </button>
-          <span class="intro-hint-text">Presiona para abrir la experiencia</span>
+          
+          <div class="intro-auto-progress-bar" title="Ingreso a la tienda">
+            <div class="intro-progress-fill" id="introProgressFill"></div>
+          </div>
+          <span class="intro-sub-prompt">Haz clic para ingresar</span>
         </div>
       </div>
+
     </div>
   </div>
 

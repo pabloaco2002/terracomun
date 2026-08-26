@@ -472,8 +472,13 @@ function initBrandIntro() {
   window.scrollTo(0, 0);
   document.body.style.overflow = "hidden";
 
+  let isOpened = false;
+
   // Function to open site with leaf curtain animation
   function openSite() {
+    if (isOpened) return;
+    isOpened = true;
+
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     brandIntro.classList.add("unveiling");
     document.body.style.overflow = "";
@@ -507,12 +512,26 @@ function initBrandIntro() {
   // Allow replaying intro from navbar
   if (replayIntroBtn) {
     replayIntroBtn.addEventListener("click", () => {
+      isOpened = false;
       brandIntro.style.display = "flex";
-      // Trigger reflow before removing class
-      void brandIntro.offsetWidth;
-      window.scrollTo({ top: 0, behavior: "smooth" });
       brandIntro.classList.remove("unveiling");
       document.body.style.overflow = "hidden";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      // Restart CSS animation sequence on stage
+      const stage = document.getElementById("introCinemaContainer");
+      const progress = document.getElementById("introProgressFill");
+      if (stage) {
+        stage.style.animation = "none";
+        void stage.offsetWidth;
+        stage.style.animation = "";
+      }
+      if (progress) {
+        progress.style.animation = "none";
+        void progress.offsetWidth;
+        progress.style.animation = "";
+      }
+
       if (window.lucide) {
         window.lucide.createIcons();
       }
