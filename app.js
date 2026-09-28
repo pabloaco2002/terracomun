@@ -310,7 +310,7 @@ if (checkoutWhatsappBtn) {
     message += `¿Podrían indicarme formas de pago (transferencia/efectivo) y tiempos de entrega/retiro? ¡Muchas gracias!`;
 
     const encodedMsg = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/5493884861994?text=${encodedMsg}`;
+    const whatsappUrl = `https://wa.me/5493884088710?text=${encodedMsg}`;
 
     window.open(whatsappUrl, "_blank");
   });
